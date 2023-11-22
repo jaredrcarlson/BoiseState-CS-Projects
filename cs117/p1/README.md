@@ -6,6 +6,7 @@
   and Steel based upon the same length, height, and base received from the user and predetermined Elasticity.
   The program then displays the values on the screen in the form of a table with column headers and aligned column values.
 
+```
  Inputs:  Length (ft)
           Height (ft)
           Base (ft)
@@ -29,3 +30,4 @@
               Calculate the Max Deflection for Steel
               Display all values on the screen in the form of a table
           END
+```
