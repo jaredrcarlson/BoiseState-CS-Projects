@@ -2,11 +2,12 @@
 
 ## Course Projects
 
-### [CS117](cs117/README.md) C++ for Engineers
+### [CS117](cs117/README.md)  *C++ for Engineers*
+An introductory course in computer programming using C++. Topics include: scalar types; aggregate types; pointers and reference types; statements; expressions; functions; libraries; and a brief introduction to classes, objects, and overloading. Emphasis is on: development, compilation, debugging, and execution of complete programs implementing given algorithms for numerical, scientific, and engineering applications.
 
-[Max Deflection](cs117/p1)  
-[Barcode Converter](cs117/p3)  
-[Best Poker Hand](cs117/p2)  
+- [Max Deflection](cs117/p1)  
+- [Barcode Converter](cs117/p3)  
+- [Best Poker Hand](cs117/p2)  
 - [Best Poker Hand v2](cs117/p6)
 - [Quiz Proctor](cs117/p4)
 - [Animated Graph](cs117/p5)
@@ -14,7 +15,8 @@
 - [The Big Race](cs117/p9)
 - [Entropy Report](cs117/p10)
 
-### [CS121 Computer Science I](cs121/README.md)
+### [CS121](cs121/README.md)  *Computer Science I*
+Introduction to object-oriented problem solving and programming. Software development process. Data and expression, conditionals and loops, arrays and lists, and classes and interfaces. Introduction to graphical user interfaces (GUIs). Guided, in-class programming activities and targeted projects to teach problem solving and software development skills.
 
 - [Traffic Animation](cs121/p1)
 - [Music Playlist](cs121/p2)
