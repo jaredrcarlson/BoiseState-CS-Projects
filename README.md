@@ -2,7 +2,7 @@
 
 ___
 
-### [CS117](cs117/README.md) :large_orange_diamond: C++ for Engineers
+### [CS117](cs117/README.md) :small_orange_diamond: C++ for Engineers
 
 <details>
 
@@ -39,3 +39,20 @@ Introduction to object-oriented problem solving and programming. Software develo
 - [Random Walk](cs121/p3)
 - [Flesch Statistics](cs121/p4)
 - [Mine Walker Game](cs121/p5)
+
+___
+
+### [CS221](cs221/README.md) :small_orange_diamond: Computer Science II
+
+<details>
+
+<summary>Course Description</summary>
+Object-oriented design including inheritance, polymorphism, and dynamic binding. Graphical user interfaces. Recursion. Introduction to program correctness and testing/analysis of time/space requirements. Basic data structures: lists, collections, stacks, and queues. Basic searching and sorting.
+
+</details>
+
+**Course Projects**
+- [Magic Square](cs221/p1)
+- [Circuit Tracer](cs221/p2)
+- [Doubly Linked List](cs221/p3)
+- [Merge Sort](cs221/p4)
