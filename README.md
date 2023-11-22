@@ -2,16 +2,16 @@
 
 ___
 
-### [CS117](cs117/README.md) - **C++ for Engineers**
+### [CS117](cs117/README.md) :small_blue_diamond: **C++ for Engineers**
 
 <details>
 
 <summary>Course Description</summary>
-*An introductory course in computer programming using C++. Topics include: scalar types; aggregate types; pointers and reference types; statements; expressions; functions; libraries; and a brief introduction to classes, objects, and overloading. Emphasis is on: development, compilation, debugging, and execution of complete programs implementing given algorithms for numerical, scientific, and engineering applications.*
+An introductory course in computer programming using C++. Topics include: scalar types; aggregate types; pointers and reference types; statements; expressions; functions; libraries; and a brief introduction to classes, objects, and overloading. Emphasis is on: development, compilation, debugging, and execution of complete programs implementing given algorithms for numerical, scientific, and engineering applications.
 
 </details>
 
-**Projects**
+**Course Projects**
 - [Max Deflection](cs117/p1)
 - [Barcode Converter](cs117/p3)
 - [Best Poker Hand](cs117/p2)
@@ -24,7 +24,7 @@ ___
 
 ___
 
-### [CS121](cs121/README.md) - Computer Science I
+### [CS121](cs121/README.md) :large_blue_diamond: Computer Science I
 
 <details>
 
@@ -33,7 +33,7 @@ Introduction to object-oriented problem solving and programming. Software develo
 
 </details>
 
-### Projects
+### Course Projects
 - [Traffic Animation](cs121/p1)
 - [Music Playlist](cs121/p2)
 - [Random Walk](cs121/p3)
