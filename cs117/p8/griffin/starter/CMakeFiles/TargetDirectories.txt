@@ -1,2 +1,0 @@
-/home/students/jcarlson/cs117/programs/p8/griffin/starter/src/hidapi/CMakeFiles/hidapi.dir
-/home/students/jcarlson/cs117/programs/p8/griffin/starter/src/projects/tester/CMakeFiles/tester.dir

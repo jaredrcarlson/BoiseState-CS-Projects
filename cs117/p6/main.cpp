@@ -50,10 +50,10 @@ int main() {
     while(play_again == 'y') {
     
         cout << "-----------------------------------------------------------------------------------------\n";
-	     cout << "This program will ask you to enter 4 playing cards.\n";
-	     cout << "The program will display the best poker hand that can be played with the cards.\n";
-	     cout << "Be sure to enter your cards as directed or you will have to rely only on your poker face.\n";
-	     cout << "-----------------------------------------------------------------------------------------\n";
+	      cout << "This program will ask you to enter 4 playing cards.\n";
+	      cout << "The program will display the best poker hand that can be played with the cards.\n";
+	      cout << "Be sure to enter your cards as directed or you will have to rely only on your poker face.\n";
+	      cout << "-----------------------------------------------------------------------------------------\n";
     
         for (int i = 1; i <= HAND_SIZE; i++) {
             hand[i - 1] = get_card(i);
@@ -89,14 +89,14 @@ Card get_card(int card_number) {
     
     while ((valid_value == false) || (valid_suit == false)) {
         cout << "\n[Valid card numbers: 2-9]" << endl;
-	     cout << "Enter the face value of card number " << card_number << ": ";
-	     cin >> card_value;
-	     
-	     cout << "\n[Valid suits: hearts, spades, diamonds, clubs (all lowercase letters)]" << endl;
-	     cout << "Enter the suit of card number " << card_number << ": ";
-	     cin >> card_suit;
-	     
-	     valid_value = new_card.set_value(card_value);
+	      cout << "Enter the face value of card number " << card_number << ": ";
+	      cin >> card_value;
+	      
+	      cout << "\n[Valid suits: hearts, spades, diamonds, clubs (all lowercase letters)]" << endl;
+	      cout << "Enter the suit of card number " << card_number << ": ";
+	      cin >> card_suit;
+	      
+	      valid_value = new_card.set_value(card_value);
         valid_suit = new_card.set_suit(card_suit);	     
     }
     return new_card;
