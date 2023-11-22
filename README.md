@@ -1,9 +1,8 @@
 ![Boise State University](bsu_logo.png?raw=true)
 
-# Course Projects
+## [**CS117**](cs117/README.md) C++ for Engineers
 
-## [**CS117** C++ for Engineers](cs117/README.md)  
-
+### Projects
 - [Max Deflection](cs117/p1)
 - [Barcode Converter](cs117/p3)
 - [Best Poker Hand](cs117/p2)
