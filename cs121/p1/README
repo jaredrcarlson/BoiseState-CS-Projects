@@ -1,0 +1,65 @@
+PROJECT OVERVIEW:
+
+This Java application displays an animated golf cart driving down the fairway on a golf course.
+
+
+INCLUDED FILES:
+
+ * README - this file
+ * TrafficAnimation.java - source code
+
+
+BUILDING AND RUNNING:
+
+All project files should be in the same directory.
+
+From the directory containing the .java source code, compile the program:
+    $ javac TrafficAnimation.java
+
+Run the program from the directory containing TrafficAnimation.class:
+    $ java TrafficAnimation
+
+
+PROJECT DESIGN NOTES:
+
+The TrafficAnimation class extends the JPanel class, so it has all of the properties
+and methods of a JPanel - this class basically just overwrites the JPanel
+paintComponent() method and includes a Timer and ActionListener to update and
+refresh the panel by periodically calling paintComponent() indirectly via the
+repaint() method. Because main() creates the JFrame and an instance of
+TrafficAnimation, this class is self-contained and there is no separate driver class.
+
+After JPanel, the classes that were the focal points of this program were the
+Timer and Graphics classes.  The Timer code was given to us. Most of the work
+for this program centered around the Graphics class and its many draw and fill
+methods.
+
+The size of all graphics are based on current window width and height. Essentially the
+width and height of every graphic are set as a percentage of the window size.
+All elements of the golf cart use an anchor point for their x position so that the golf cart
+remains fully intact and moves with the anchor. 
+
+
+PROJECT DEVELOPMENT AND TESTING NOTES:
+
+It was a little tricky to get my elements lined up properly and get them all to
+be the right size. After trying a few different techniques, I decided that it
+was easiest for me to just think in percentages and use width and height
+dimensions according to how much screen I felt they should take up.  Drawing
+the triangle shapes for the trees took me a little while to figure out, but
+I was able to use the drawPolygon method and use some arrays to hold my x and y
+coordinates for each point of my polygon.
+
+I tested each element several times
+as I was drawing them which helped me to make sure they ended up being the right
+size. While testing the animated wheels of the golf cart, I noticed that my code
+was causing the wheels to spin backwards. After making some adjustments to my
+logic, I eventually got them spinning correctly.
+
+
+
+EXTRA CREDIT:
+
+I added a dot that rotates clockwise around the center of each wheel to make them appear to be rolling.
+I was able to achieve smooth wrapping by setting x to a negative value (a little longer than my golf cart)
+as soon as x reached a value greater than the width of the window.

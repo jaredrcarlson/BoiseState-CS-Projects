@@ -1,0 +1,67 @@
+PROJECT OVERVIEW:
+
+This Java application performs a readability analysis on plain text files.
+This application can handle multiple text files that are gathered as command line arguments.
+A few of the statistics calculated are the total number of words, syllables per word,  and total sentences.
+These statistics are then used to determine what reading level would be required for each text file.
+The methods and results used in this application have been derived from the popular Flesch readability tests.
+
+
+INCLUDED FILES:
+
+ * README - this file
+ * ProcessText.java <source code> Main class - Accepts plain text file names and verifies that they can be accessed 
+ * FleschStatistics.java <source code> Handles text file processing, statistics, and result generation
+ * FleschStatisticsInterface.java <source code> An easy to use interface for FleschStatistics objects 
+
+
+BUILDING AND RUNNING:
+
+All project files should be in the same directory.
+Plain-text file names need to be entered as command-line arguments using either absolute or relative path names.  
+
+To compile the program, run the following command from the directory containing the .java source code: 
+    $ javac ProcessText.java
+	
+Run the command-line program from the directory containing ProcessText.class:
+Note: At least one file name must be given as an argument.
+    $ java ProcessText filename.txt
+
+
+PROJECT DESIGN NOTES:
+
+The ProcessText class checks the accessibility of input files, creates an object for each, and displays the results.
+The FleschStatistics class implements all of the methods available in the FleschStatisticsInterface.
+The interface is used for object instantiation, readability analysis, and reading-level determination.
+When a FleschStatistics object is created, the constructor opens the text file and performs line-by-line processing.
+The total number of words, total number of sentences, and number of syllables per word are counted.
+These statistics are then used to generate an index score using a formula from the Flesch method.
+The reading-level required for each text file is determined by the index score with lower scores requiring a higher reading level.
+The grade-level report for each file is displayed after processing, while an error is displayed for each file that could not be accessed.
+
+
+PROJECT DEVELOPMENT AND TESTING NOTES:
+
+I began development by studying the FleschStatisticsInterface to make sure that I understood how
+the FleschStatistics class would be used. I looked at all of the values that were
+returned from the various methods in the interface and thought about what each of them were used for
+and how they relate to each other. This really helped me to get started in the right direction
+rather than getting stuck later on by not understanding the purpose of each variable and method.  
+
+I then wrote the ProcessText driver class containing the Main method. This class handles file name validation
+so that non-existent or inaccessibility files can be reported without bringing the program to a close.
+This process was done by using the exists() and canRead() methods available from the File class.
+A for loop is used to step through each command-line argument with an if statement inside to verify each
+file or display an error on screen.
+
+My final development task was implementing the FleschStatistics class which was mostly straight forward.
+The constructor performs all tasks required to generate a reading-level report, so basically once the object
+is created, all of it's instance variables are calculated and can be accessed without any problems.
+A StringTokenizer object is used to parse each text file and calculate all of the essential information needed
+to determine readability. The toString() method formats the readability report in a desirable display format.
+
+It took quite a bit of testing and debugging to get my syllable counts correct. I needed to write some basic logic
+steps out on paper in order to make sure that I was using nested loops properly in order to count syllables without
+attempting to read beyond the last index of a string. I ended up writing some private methods to check if a character
+were a vowel. These private methods really helped to simply my conditional statements making it easier for me to
+avoid logic errors. I learned quite a bit about text file processing while working through the challenges of this project.

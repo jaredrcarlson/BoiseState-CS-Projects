@@ -1,4 +1,4 @@
-## Best Hand
+## Best Poker Hand
 ```
  Program Description:
  This program takes 4 poker playing cards as inputs. The program will determine and display the best poker hand that can be played with the cards.

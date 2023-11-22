@@ -3,13 +3,11 @@ An introductory course in computer programming using C++. Topics include: scalar
 
 ## Projects
 - [Max Deflection](p1)
-- [Best Poker Hand](p2)
 - [Barcode Converter](p3)
+- [Best Poker Hand](p2)
+- [Best Poker Hand v2](p6)
 - [Quiz Proctor](p4)
 - [Animated Graph](p5)
-- [Best Poker Hand v2](p6)
 - [Secret Message](p7)
 - [The Big Race](p9)
 - [Entropy Report](p10)
-
-

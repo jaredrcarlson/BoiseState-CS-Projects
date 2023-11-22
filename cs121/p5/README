@@ -1,0 +1,98 @@
+PROJECT OVERVIEW:
+
+This Java application is a game that simulates walking through a mine field. The player can move one adjacent tile
+at a time. When a player moves to a new tile, the new tile's color will change to show how many mines are nearby.
+The player should reference the Color Key to determine how many mines are adjacent to their current tile.
+The player begins with 0 points and 5 lives. 10 points are earned for each tile the player reaches safely, but
+the player will lose 30 points and 1 life for stepping on a mine. The object of the game is to make it from
+the bottom-right tile to the top-left tile without losing all of your lives. There are "Free Lives" and "Bonus Points"
+hidden underneath some of the tiles for the player to find. If the player reaches the goal, any remaining lives are
+worth 100 points and are added to the score. Once the goal is reached or all lives are lost, a message is displayed. 
+
+
+INCLUDED FILES:
+
+ * README - this file
+ * MineWalker.java <source code> Main class - Creates and displays (frames) a MineWalkerPanel
+ * MineWalkerPanel.java <source code> Creates a complete game board
+ * RandomWalk.java <source code> Used to create a safe path where mines cannot be placed
+ * sounds <source directory> Contains all of the sound files for the game
+ * images <source directory> Contains all of the image files for the game 
+
+
+BUILDING AND RUNNING:
+
+All project files should be in the same directory.
+
+To compile the program, run the following command from the directory containing the .java source code: 
+    $ javac MineWalker.java
+	
+Run the program from the directory containing MineWalker.class:
+	$ java MineWalker
+
+
+PROJECT DESIGN NOTES:
+
+The MineWalker class creates a MineWalkerPanel object as well as a JFrame to hold the MineWalkerPanel.
+The MineWalkerPanel class creates all of the needed panels and components for the game.
+The MineWalkerPanel class makes use of the RandomWalk class to create a "Safe Path" from the player's
+starting tile to the goal tile. This "Safe Path" is then protected when mines are placed.
+The MineWalkerPanel constructor initializes all instance variables according to the game's default
+values, and then starts a new game. Grid size and difficulty can be adjusted for subsequent games.
+The MineWalkerPanel class implements both ActionListener and ChangeListener to handle the
+events triggered by the JButtons and JSlider respectively.
+To ensure that the source code and logic is easy to read, the MineWalkerPanel class uses several
+private methods to update the game panels, play sounds, and display images.
+
+
+PROJECT DEVELOPMENT AND TESTING NOTES:
+
+I began development by drawing and labeling all of the panels and components on paper. This allowed me to
+easily choose a proper layout method for each of the panels. I was able to reference my drawing while
+creating all of the basic instance variables I needed for the application.
+
+The next step I took was to alter my RandomWalk class so that it would produce a safe path from the
+bottom-right corner to the top-left corner to meet the requirements of my MineWalkerPanel class.
+I then created the MineWalker class that will build and display a MineWalkerPanel.
+
+I then created the basic outline for the MineWalkerClass containing all panels, buttons, and listeners.
+With a skeleton in place, I implemented several private methods to break down all of the tasks the
+application needed to perform. While creating these methods, I found that I needed to add more
+instance variables to the class as there were more items that I needed to keep track of for later use.
+
+I was then able to begin testing my application which is where I found several logic errors that caused me
+to re-think a few areas of the code. I made adjustments and added some boolean-returning methods that would
+check if certain conditions were true like "Has the goal been reached" or "Have all lives been lost".
+This was also the period of the design process where I experimented with and resolved some issues I was
+having with control buttons displaying the incorrect text or being left in the wrong state after a game.
+The testing phase revealed several things that I hadn't considered which was very educational.
+
+One problem I had to work through was that my JButtons (game tiles) were stored in a 2-dimensional array,
+but there wasn't any way for me to get their array locations (index) from the source object gathered
+through my ActionListener. While I could have created a custom button class that would extend the JButton
+class and also contain a Point object, I thought there must be an easier way. I ended up giving each of
+my JButtons a Name using the .setName() method. For the name, I used the format "x,y" so that I could
+get the JButton's coordinates later through the String's .split() method using a comma as the delimiter.
+This method is functional, but I will create my own custom button class in the future rather than using
+a class in a non-conventional manner.
+
+I also found it pretty tricky to animate the player's current position, but I was able to create the
+functionality I was looking for by placing the animation code in my MineWalkerPanel class.
+
+
+OTHER THOUGHTS:
+
+This was a very challenging and enjoyable application to design which really expanded my programming skills!
+
+
+EXTRA CREDIT:
+
+I implemented a JSlider so that game difficulty can be adjusted.
+The slider ranges from 5% to 75% mine placement which I found to be reasonable while testing.
+
+I added sounds to make the game more enjoyable to play.
+I included background music which can be muted with the press of a button if the player desires.
+I included sound effects for button presses, player moves, invalid moves, mine explosions, free lives, and bonus points.
+I included short sound clips and images for a victory or loss.
+
+Note: I added a few more elements aside from extra credit that I felt were needed to make the game more enjoyable.

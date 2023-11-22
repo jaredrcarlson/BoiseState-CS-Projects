@@ -1,0 +1,99 @@
+PROJECT OVERVIEW:
+
+This Java application simulates a random choice path for a particle traveling on a cartesian-style grid.
+The program prompts the user for the desired grid size and optional seed value for random number generation.
+The particle begins in the top-left corner at Point (0,0) with a goal of reaching the bottom-right corner.
+The particle will never revisit any Point on the grid so it is possible for the particle to get stuck.
+If the particle gets stuck without any direction to move, the simulation simply resets and tries again.
+The simulation will repeat as many times as needed for the particle to reach the bottom-right corner.
+
+
+INCLUDED FILES:
+
+ * README - this file
+ * RandomWalk.java - source code - RandomWalk class
+ * RandomWalkTest.java - source code - command-line driver for RandomWalk class
+ * RandomWalkGUI.java - source code - graphical driver for RandomWalk class
+ * GridMap.java - source code - used for the graphical driver
+ * EnglishNumberToWords.java - source code - used to print number of attempts in human-readable terms
+
+
+BUILDING AND RUNNING:
+
+All project files should be in the same directory.
+
+To compile the command-line program, run the following command from the directory containing the .java source code: 
+    $ javac RandomWalkTest.java
+	
+Run the command-line program from the directory containing RandomWalkTest.class:
+    $ java RandomWalkTest
+
+When prompted, enter the desired grid size and optional seed value (0 for no seed).
+
+To compile the graphical program, run the following command from the directory containing the .java source code:
+    $ javac RandomWalkGUI.java
+
+Run the graphical program from the directory containing RandomWalkGUI.class:
+	$ java RandWalkGUI 10 1234
+
+The graphical program takes the grid size (required) and seed value (optional) as command-line arguments.
+
+
+PROJECT DESIGN NOTES:
+
+The RandomWalk class makes use of the Point and ArrayList classes while using
+a Random object to store the particle's path from start to finish.
+A RandomWalkTest object gets user input and then calls the createWalk() method.
+The createWalk() method calls the step() method repeatedly until the goal is reached.
+The step() method uses the private isValid() method to determine which next steps are possible
+new points for the particle to move to. If a point hasn't been visited yet and is within
+the grid boundaries it is marked as a valid move and could be randomly chosen. If the
+particle runs out of valid moves before reaching it's goal, the step() method resets the
+simulation while keeping track of how many attempts it takes to reach the goal.
+When the goal is reached, the successful path is recorded and the RandomWalkTest object
+uses the toString() method to display the number of attempts and the path traversed.
+
+The RandomWalk class has two constructors to handle grid size and optional seed value parameters.
+Both constructors initialize the several fields contained in the RandomWalk class, including the
+current starting point, possible next points, grid size, grid boundaries, boolean values to signal when the
+particle is stuck or has reached the goal, and lists to store the path and possible next step values.
+One constructor handles user entered seed value for the Random object, while the other sets the seed to zero.
+
+The choices made during the design process were to make sure that the particle could randomly take
+it's next step in any valid direction so that the path ended up being as random as possible. The
+ability to move freely in any direction makes it less likely that the particle will reach the goal
+so the program was also designed to track and report how many attempts it takes the particle to succeed.
+
+
+PROJECT DEVELOPMENT AND TESTING NOTES:
+
+To begin the development process, I studied the Point class methods to understand how to use
+Point objects efficiently. I worked on the RandomWalk class one method at a time and added
+several fields to store the values I felt were needed to make the logic of my code easy to 
+follow. By adding many descriptive fields, I found it much easier to avoid logical errors.
+The expressions I used in conditional statements became easier for anyone to glance at and
+quickly understand how each method makes decisions.  
+
+I initially had my RandomWalkTest driver program using the RandomWalk object's isDone() method to
+try and detect when the particle was stuck and needed to be reset, but I had to modify this design
+after analysing how the RandomWalkGUI program worked. I ended up having the RandomWalk object's
+createWalk() method loop (calling the step() method) until the particle reached the goal.
+The object's step() method now detects when the particle is stuck and resets the simulation.
+
+Overall, the testing phase of this project was very smooth with minor formatting issues I needed
+to address. I'm sure this was because I used descriptive fields and an extra private method to
+check which next steps were valid, allowing me to get the logic working without much effort.
+By breaking down tasks into small blocks of code, I was able to quickly detect problems and get
+the program working correctly.
+
+
+EXTRA CREDIT:
+
+I designed the program so that the particle can move in any valid direction at any time until it
+either gets stuck and starts over or it reaches the goal. As discussed in class, this made it much
+less likely that the particle would reach the goal without getting stuck. For grid sizes larger than
+50, I found the program taking a long time to finish so for fun I added a counter to report the number of
+attempts it took to reach the goal. I included a class I found online named EnglishNumberToWords.java that puts
+large numbers into words in order to get the full effect when reading how many attempts it took the
+particle to reach it's goal. A grid size around 50 can take more than a million attempts before
+completing so I guess it's a good thing computers don't get tired!

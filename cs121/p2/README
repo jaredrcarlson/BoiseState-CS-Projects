@@ -1,0 +1,69 @@
+PROJECT OVERVIEW:
+
+This Java application creates a music playlist for three songs that are entered as input. Each song contains a title, artist, playtime, and filename.
+This application sorts the songs by playtime in ascending order, reports the average playtime, and reports the song closest to 4 minutes in length.
+Then the playlist is displayed and all the songs are played.
+
+
+INCLUDED FILES:
+
+ * README - this file
+ * PlayList.java - source code
+ * Song.java - song class
+ * input.txt - used to autoload song information
+ * whipIt.au - audio file
+ * whosTheBoss.au - audio file
+ * mash.au - audio file
+
+
+BUILDING AND RUNNING:
+
+All project files should be in the same directory.
+
+From the directory containing the .java source code, compile the program:
+    $ javac PlayList.java
+
+Run the program from the directory containing PlayList.class:
+    $ java PlayList
+
+When prompted, enter the song Title, Artist, Playing Time, and Filename (relative to source code folder).
+
+
+PROJECT DESIGN NOTES:
+
+The PlayList class makes use of the Song class to build a music playlist.
+This class is designed to handle 3 songs that are all specified by the user.
+The variables that store the user's song information are all Strings.
+The playTime variable is then converted to store as total number of seconds.
+The total number of seconds are then used for the sorting, average playtime, and
+near 4 minutes features.
+
+The Song class constructor uses parameters title, artist, playTime, and fileName.
+Then each of these data members can be accessed through a get method.
+There is also a play method that plays the song while displaying its information.
+
+There aren't any additional methods within the PlayList class, but the code could
+be much cleaner if I would have had enough time to go back through and move some
+tasks into methods.
+
+PROJECT DEVELOPMENT AND TESTING NOTES:
+
+The development of this project was pretty smooth and straight-forward.
+Each song input has it's own set of code which added several more lines,
+but using a loop introduced problems. Without using an array to store the
+Song objects, I could not find a way to give a Song a unique name while looping
+through the questions.
+
+Implementing the play method required some back and forth coding / testing to get
+it to work as I desired. Getting the songs to play was simple with the code provided,
+but the tricky part was making sure the program waits for each song to play before
+playing the next one. This required lots of testing and making sure to convert seconds
+to milliseconds. I also found after testing, that I needed to store the final minute
+and final seconds for each song in order to know when to terminate the "playing now"
+loops and the timer.
+
+
+EXTRA CREDIT:
+
+I was able to get the playlist to play all the songs in order.
+It was tricky, but lots of fun making sure the songs didn't play all at the same time!
