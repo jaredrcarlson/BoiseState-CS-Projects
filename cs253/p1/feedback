@@ -1,0 +1,24 @@
+
+Hey Jared,
+
+When developing code you should make it a high priority to keep your code as readible as possible - by using well named variables & functions, using concise & accurate comments, proper spacing & code formatting, by avoiding global variables, adhering to the "principle of least astonishment", and by keeping your logic the least complicated as possible. Most of the cost of software engineering projects is in maintaining the code, not in the initial development. So if you find yourself being a software dev engineer one day, you'll most certainly have test & QA engineers scrutinize and debug your code (or vise versa). It is imparitive that you don't waste other people's time whom might struggle to read your code since it will certainly cost your company money, and if continued can cost you your job. I really only mean to help, as my suggestions are based upon real experience.
+
+Now after that long suggestion, your code is a great example of readible code. Great use of #define directives to avoid using magic numbers, GREAT use of concise/informative comments, great variable naming, and clear counting logic (decreasing program complexity) to all increase program readiblity. Great job - very readible & efficient code.
+
+Great efficiency using an int[] and a single forloop for initializing/printing digit results.
+
+Literally my only suggestion for improvement (its incredibly minor) - create a variable for your numDigits[] size - since you use it more than once, its a magic number, and its nice decreasing loop complexity by increasing readibility like this: for( i=0; i<MAX_ARRAY_LENGTH; i++) , instead of this: for( i=0; i<10; i++)
+
+Perfect README, repeast this for furture assignments :) #define directives are odd, but when used appropriately are really handy.
+
+Overall - great job!
+
+
+PROJECT GRADE BREAKDOWN:
+========================
+grader (PASS/FAIL) -> 50/50
+code quality -> 40/40
+readme -> 10/10
+
+Cheers,
+Joey.

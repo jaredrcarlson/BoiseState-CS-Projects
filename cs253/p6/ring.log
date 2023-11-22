@@ -1,0 +1,5 @@
+log 0: 
+log 1: Error: failed 5
+log 2: Error: we tried to make foo when we needed bar  ... oops that was a pretty craz
+log 3: Error: failed 6
+log 4: Error: shutdown

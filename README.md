@@ -56,3 +56,23 @@ Object-oriented design including inheritance, polymorphism, and dynamic binding.
 - [Circuit Tracer](cs221/p2)
 - [Doubly Linked List](cs221/p3)
 - [Merge Sort](cs221/p4)
+
+___
+
+### [CS253](cs253/README.md) :small_orange_diamond: Software Development in C
+
+<details>
+
+<summary>Course Description</summary>
+Structure of C programs, functions, scope, arrays, structures, pointers, and run-time memory management. Introduction to build systems, debugging techniques, and process management and basic systems programming.
+
+</details>
+
+**Course Projects**
+- [Text Statistics](cs253/p1)
+- [Binary String | Unsigned Integer Converter](cs253/p2)
+- [List Tester](cs253/p3)
+- [Make - Compile & Run C Program](cs253/p4)
+- [Bash - Testing C Program](cs253/p5)
+- [Checkpointing](cs253/p6)
+- [Checkpointing - Multi-Threaded](cs253/p7)

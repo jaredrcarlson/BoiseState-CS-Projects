@@ -1,0 +1,48 @@
+Hey Jared,
+
+
+In response to your README:
+==============================
+-> TWO major assumptions: 1. You lock/unlock properly in log_msg(), 2. Each newly created thread is designated to do the same amount of work as the other. 3. Nearly all the work done by a thread is issuing log_msg()'s.
+
+-> Results: If your code satisfies 1,2,3 then single threaded version should be the fastest, the more threads = the poorer performance. This is because the amount of work is not be divided amongst threads, each thread is creating extra work with each new thread. Yes some threads (the number of cpu's you have) will be running in parallel, but because you used locks on nearly all the work each thread is doing, then you get NO performance benefit. Only 1 thread on 1 cpu will have the lock and thus doing work. All threads then will essentially be running as if it were single threaded, creating a back-up of threads waiting to run log_msg().
+
+
+
+Test.c test code:
+==============================
+-0  implementation set-up to test single vs. multithreaded execution.
+
+-0  at least 3 threads executing unique logs messages. (*Unique thread msgs implies you manually checked your log file at some point to prove you were running a multi-threaded app - that each thread was in fact writing messages to the buffer.)
+
+
+
+Ring.c logic and semantics:
+==============================
+-0  protected buffer write access from within log_msg(), i.e. strncpy(buff.log[idx],entry,MAX_STRING_LENGTH);
+	
+-2  Minor improper use of ring buffer - no signal()/alarm() found in init_buff()
+    -> signal(SIGALRM,checkpoint_handler); alarm(alarm_interval);
+    -> these are NOT suppose to be issued in test.c!
+
+
+		
+I hope you enjoyed this class! Systems programming can be a lot of fun, especially when you start writing code for things you assumed will always work, i.e. p6 a text editor like vim's swp.file system that creates backups in case the program crashes, or in OS when you create your own shell :) Makes you appreciate all that goes into the software we use. Good luck with finals and the rest of the semester. Its been my privilege helping this semester.
+
+
+
+Cheers,
+-Joey.
+
+===========================================
+==            GRADE BREAKDOWN            ==
+===========================================
+40/40 = Test.c pthread usage.
+35/35 = Ring.c pthread usage.
+5/5 = No un-needed Mutexes.
+8/10 = Code Quality (functs, logic, comments).
+10/10 = README.
+-0 = Late Submission.
+
+Your grade = 98
+

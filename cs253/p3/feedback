@@ -1,0 +1,66 @@
+
+Hey Jared,
+
+ALL of your p3 files have executable permissions on them?! This shouldn't be the case.
+
+
+Good readme. Great job.
+
+
+WOW - you should become a Test Engineer :D Best UnitTester I've seen in 2 semesters of grading :D! Awesome.
+
+
+Since several student's readme discussed ambiguities with function pointers and conceptual misunderstandings I thought I would make a SUPER quick/simple example to help. Please review example-fptr.c source code contained in this p3 directory:
+
+chmod a+x run.sh //in case exec permissions were stripped while pushing to student repos
+
+./run.sh  //to compile, run, and clean-up example code execution.
+
+
+Minor clarification on more concepts -> a dangling pointer is a pointer (integer value representing a memory location) that has had its memory on the heap deallocated, but the pointer itself was never free'd/set to NULL.
+
+This is dangerous and can cause segfaults. Here's why, say this happens and now we malloc another (let's say node) struct onto the heap. The problem arises if the address of the dangling pointer is a subset of the new struct memory address space. If you now try and use the dangling pointer, you might be grabbing chunks of memory that have no meaning according to what you're trying to grab.
+ 
+
+The purpose of the UnitTester.c was for you guys incrementally test your List.c functions - this is generally a good idea and in fact is something you might experience in industry. The idea is, directly after writing 1 List.c function, if you test it with 1-3 UnitTests, then you gain a reasonable level of assurance that you can continue writing List.c functions without your List failing later on due to an older mistake. It's also a great idea because if you fail the final grader (Shane's UnitTester) you dont have visibility to his tests & thus no real way of problem solving the issue without the granularity that the UnitTester.c provides.
+
+This being said your UnitTester.c looks great! Seeing that you've passed the final grader I hope this was a valuable testing technique during your development processes.
+
+
+Another slightly less obvious goal of the UnitTester.c & List.c was for you guys to get a feel for creating/using structs. This is such a fundamentally key concept with C as its really the only efficient way of organizing data and abstracting components of a real world problem into a computer science solution (for C at least). Take the time now to think about the details - ask yourself where should structs & their data be saved? Should I malloc space for the struct or have it be statically allocated as global data at compile-time? What flexibility do I get by doing one vs. the other? Your last assignments & pretty much every OS project you'll have will require this kind of thinking. Take the time & ask yourself these questions now while its fresh and new.
+
+
+Great use of isEmpty(), removeFront(), removeRear() within other List.c functions!! This is a simple, but effective tool at making your code more reliable by increasing your List.c module cohesion. [Concept -> increasing function dependencies within the same module increases the likelihood that you catch bugs early on during testing, because testing 1 function may actually test for several functions -> thus more reliable when released after testing].
+
+
+Good job with your removeNode(). Its efficient and takes the List.h description/assumption properly into account, "Assumes that the node is a valid node in the list." Good job!
+
+
+Great job with your reverseList() function! In my opinion this was the hardest functions for students to write not having any prior experience with pointers.
+
+
+It looks like you've got the hang of pointers. I'm sure you're very comfortable using the dot operator in Java to dereference objects for their public methods, besides the new C syntax, these are the exact same concepts. You dereference heap structs by using "name->", and dereference static structs by using their "name."....
+
+The biggest difference & one that certainly highlights C's strength and scariness, is that in C, all struct variables are visible if you've got a valid pointer to its memory! The memory of the struct is also completely modifiable as you the developer wish (best seen with Unions). The java equivalent would be an object that you could use to use its private methods/instance variables (scary) and/or using the object to grab only a piece of the bits associated with an instance variable, i.e. grab the first short of an integer (powerful).
+
+
+Cheers,
+-Joey.
+
+===========================================
+==            GRADE BREAKDOWN            ==
+===========================================
+50/50 = P/F Grading Scripts.
+2/2 = CODE Formatting.
+5/5 = CODE Documentation/Comments.
+15/15 = CODE Avoid Copy/Paste w/Re-usable Functions.
+10/10 = CODE Semantics/Logic.
+8/8 = Adequate Testing w/in UnitTester.c.
+5/5 = README Template.
+2/2 = README Grammar/Spelling.
+2/2 = README Correct Statements.
+1/1 = README Sources Used.
+-0 = Late Submission.
+
+Your grade = 100 GREAT JOB :D!!!
+

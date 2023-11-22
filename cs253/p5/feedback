@@ -1,0 +1,56 @@
+Hey Jared, 
+
+
+One or more of your files in p5 have executable permissions while they should not!
+
+
+Good readme. Sort, concise, followed template, provided a specific issue/solution. Good job here.
+
+
+Hard coding dynamic info is a BAD idea. For instance: 
+your code -> 
+MSG_WF_OPTION1_FAIL="Reason: The command \"wf --self-organized-list <textfile>\", did not redirect output."
+
+is very limiting and makes your program very inflexible. If something small in the requirements changes most of your code is no longer applicable. You should try and make your code as dynamic as possible, for instance:
+APP=wf
+OPT1=--self-organized-list
+FAIL_MSG1="Reason: The command $APP $OPT $dest, did not ..."
+
+
+This solution is more extendible and flexible.
+-1   poor code reuse
+
+
+Backpack.sh bash shell script code:
+-0   good comments,
+-0   good line spaces,
+-0   good grouping of statements with common purpose...
+
+
+Backpack.sh bash shell script testing code:
+-0   both options of wf problem tested,
+-1   no testing for wf existence before use,
+-0   testing for wf successful execution... 
++1   great unique solution
+
+
+Cheers,
+-Joey.
+
+===========================================
+==            GRADE BREAKDOWN            ==
+===========================================
+50/50 = P/F Grading Scripts.
+2/2 = CODE Formatting.
+5/5 = CODE Documentation/Comments.
+15/15 = CODE Avoid Copy/Paste w/Re-usable Functions.
+10/10 = CODE Semantics/Logic.
+8/8 = Adequate Testing w/in backpack.sh.
+5/5 = README Template.
+2/2 = README Grammar/Spelling.
+2/2 = README Correct Statements.
+1/1 = README Sources Used.
+-0 = Late Submission.
+
+Your grade = 100
+

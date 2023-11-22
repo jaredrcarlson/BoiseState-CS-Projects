@@ -1,0 +1,42 @@
+Hey Jared, 
+
+Awesome -> "...have always wondered what these commands actually do..."
+
+Good README. For you last few assignments remember that you DONT have to write a lot to get a 100% on these sections, for instance the following is a concise example that I would give full credit for the discussion section:
+
+BUG #1 DISCOVERED:      gcc hello.c hello -o
+THE ISSUE:              incorrect ordering of gcc options, -o needs to be before the object file it re-names
+MY SOLUTION:            gcc hello.c -o hello
+
+BUG #2 DISCOVERED:
+...
+...
+
+
+A minor bug exists in your Makefile.
+BUG: 			SRC=main.c
+				...
+				hello: $(SRC)
+ISSUE:			Target should not be dependant on main.c, should be dependent on main.o
+SOLUTION:		SRC=main.o
+
+
+Cheers,
+-Joey.
+
+===========================================
+==            GRADE BREAKDOWN            ==
+===========================================
+50/50 = P/F Grading Scripts.
+2/2 = CODE Formatting.
+5/5 = CODE Documentation/Comments.
+15/15 = CODE Avoid Copy/Paste w/Re-usable Functions.
+9/10 = CODE Semantics/Logic. -1 bug exists in Makefile
+8/8 = Adequate Testing w/in backpack.sh.
+5/5 = README Template.
+2/2 = README Grammar/Spelling.
+2/2 = README Correct Statements.
+1/1 = README Sources Used.
+-0 = Late Submission.
+
+Your grade = 99

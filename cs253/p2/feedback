@@ -1,0 +1,54 @@
+Hey Jared,
+
+Global variables like the one you used below are typically unsafe and a bad programming practice.
+const int NUM_BYTES_PER_UNSIGNED_INT = sizeof(unsigned int);
+Better solution: #define BYTE_SIZE 8, this tells the compiler anytime this text matches replace it with the value 8
+
+
+Nice use of the switch statement!
+
+
+NICE DEBUG CODE :D In the future I'd push two versions of your code - follow this for the future:
+git commit -m "Finished p2 - debug code still in"
+//then remove & fully clean your code, comment in README its the previous push
+git commit -m "Finished p2"
+
+
+error printing has duplicate statements! You avoided using functions here by "copy pasting" like-functionality code...
+printf("Error! Not enough arguments were provided.\n");
+In the future just provide a generic error message and boot the program - put it all in 1 function and through code reuse use it every where you need.
+Like you do with: displayProgramUsage()
+
+
+Solution for swapBytes() is what we want to see - something that's dynamic and can be used for any system (aka any byte size of an integer). This was probably the hardest problemfor this assignment, so good job.
+
+
+Begin long comment :) ->
+
+The use of functions, especially in C, is incredibly crucial to developing "good code". Functions in C do all sorts of magic for you and you should learn to use them often. 
+Functions (in my mind) MOST importantly allow for increased flexibility and future extendibility of your code. If I develop an app that does all kinds of crazy cool things and needs a algorithm to sort, print, or say format something - encapsulate the that work (say the algorithm) in a function. This way if find a more elegant formatting algorithm in the future, or new search comes out in the best way to sort something, you only have to change one line where that function was & insert a function call to the new "best working code", decreasing all kinds of dependencies within your code -> allowing for extendible code.
+Probably the next best advantage for using functions is that they allow for code reuse. Even if its only 4 lines of code, if you think you'll likely have to write that again, even once, put it in a method... believe me they help speed with your code writing.
+Functions encapsulate complex code making readability better; they reduce the block size of code making readability better; if giving useful names REALLY make reading your code more linear, logical, and easier to read.
+Functions allow developers to increase file cohesion (the grouping of like elements typically lead to more reusable and reliable code... if addToFront(list) uses getSize(list) (functions in the same file) you're increasing cohesion within that file, gaining all the benefits I just described). 
+
+Hopefully you see the usefulness of functions. This is by no means a complete list, and using functions in wrong ways like grouping unrelated code together is a terrible idea -> decreases extendibility, but hopefully this makes you more aware of some of the good programming practices related to functions when writing code.
+
+Cheers,
+-Joey.
+
+===========================================
+==            GRADE BREAKDOWN            ==
+===========================================
+50/50 = P/F Grading Scripts.
+0/2 = CODE Formatting. -2 weird ^M char insert for each newline
+5/5 = CODE Documentation/Comments.
+10/15 = CODE Avoid Copy/Paste w/Re-usable Functions. -5 error printing
+18/18 = CODE Semantics/Logic.
+5/5 = README Template.
+2/2 = README Grammar/Spelling.
+2/2 = README Correct Statements.
+1/1 = README Sources Used.
+-0 = Late Submission.
+
+Your grade = 93
+

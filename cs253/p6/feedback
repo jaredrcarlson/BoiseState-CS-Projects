@@ -1,0 +1,61 @@
+Hey Jared, 
+
+In response to your README ->
+==============================
+"This one has had me thinking for a long time......well this would occur if logging is being done at the same time the alarm signal is sent which automatically calls the dump method."
+Exactly :)! Good job seeing this.
+
+
+Test.c test code:
+==============================
+**Please remove un-needed comments from test.c as they detract from the readability of your code -> "//This is an example of using a relative path..."
+-1   no use of functions or another such solution for encapsulating 1 test from the other... if the 1st test fails how do I know it wasn't your 3rd test unless you encapsulate these (say with functions, even if/else, or case..)? maybe have a #define TEST_NUM X where you run your test.c once for each test -> main(){ if(TEST_NUM=0)testNullCase; if(TEST_NUM=1)testLongMsgCase; etc... } test each one separately checking to see what's in ring.log to prove your point... this of course is only 1 solution :).
+-1   no testing for & preventing log(NULL) test case.
+-0   good job testing for & preventing log(long msg) test case.
+-1   no testing for & preventing integer overload w/buff.char, like -> for(INT_MAX_VALUE+1){ log(blah) }
+-1   no explicit testing for SIGALRM interrupting test.c during log_msg(), like -> for(2+ seconds){ log(blah) }
+
+
+Ring.c logic and semantics:
+==============================
+your code -> signal(SIGALRM,checkpoint_handler); alarm(1);
+SHOULD NOT BE CALLED FROM TEST.C - this is a logical misunderstanding and an incorrect usage of ring.c
+
+-1   (see my comment in test code)improper or missing placement of signal() in init_buffer(). This is a logical issue.
+-1   (see my comment in test code)improper or missing placement of alarm() in init_buffer(). This is a logical issue and a bug.
+-0   proper placement of alarm() directly after dump_buffer().
+     -> Good job placing this in sig_handler() as well!! this is a great use of functions to encapsulate like-functionality, & removing it from file writing stuff.
+     -> minor error alarm(1); do not hard code values with alarm()
+**it is imperative that you understand these concepts for p7 & future system level classes. Please email me, or come into tutoring for assistance if you want to alleviate painful debug issues with p7. Seriously we're only here to help.
+-0   correct implementation of dump_buffer() used to write to a file specified by log_name, good job here!
+
+		
+General notes of things I saw and hope everyone takes away:
+==============================
+1. I posted in piazza some really good links that describe signal() and alarm(), please review these.
+https://www.freebsd.org/cgi/man.cgi?sektion=3&query=signal
+http://man7.org/linux/man-pages/man7/signal.7.html
+http://man7.org/linux/man-pages/man2/alarm.2.html
+2. Functions should encapsulate like-functionality & never to group unrelated things. 
+For instance, we wouldn't want to write a function that calculates a sum, initializes a List of names, and prints something to the screen. This makes your code un-reusable & is completely inflexible to change.
+Its very unlikely that unrelated things will need to be processed in the same way from 1 app to another...
+Encapsulating like-functionality code is great though -> encapsulate the init of a data structure, encapsulate an algorithm for computing largest child of a data structure, etc... these can be reused by multiple apps, and with a little bit of generics (& if its tested thoroughly) never needs to be looked at again when reused.
+3. Debugging system issues with signal interrupts or interrupts from other entities requires UNIQUE problem solving techniques & usually requires averaging your results from multiple runs to gain assurance. Please use this advice for p7 :) maybe include a table of this data in your README... :)
+
+
+I really hope my comments help and my grading isn't too harsh. One more assignment - we're ALL almost done.
+
+Cheers,
+-Joey.
+
+
+===========================================
+==            GRADE BREAKDOWN            ==
+===========================================
+50/50 = P/F Grading Scripts.
+28/30 = Code Quality (functs, logic, comments). -2 logical issues &/or bugs exists
+6/10 = Code Quality (testing). -4 test code lacking
+10/10 = README.
+-0 = Late Submission.
+
+Your grade = 94
