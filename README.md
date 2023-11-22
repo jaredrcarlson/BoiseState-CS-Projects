@@ -1,11 +1,13 @@
 ![Boise State University](bsu_logo.png?raw=true)
 
-### [CS117](cs117/README.md) *C++ for Engineers*
+___
+
+### [CS117](cs117/README.md) - **C++ for Engineers**
 
 <details>
 
 <summary>Course Description</summary>
-An introductory course in computer programming using C++. Topics include: scalar types; aggregate types; pointers and reference types; statements; expressions; functions; libraries; and a brief introduction to classes, objects, and overloading. Emphasis is on: development, compilation, debugging, and execution of complete programs implementing given algorithms for numerical, scientific, and engineering applications.
+*An introductory course in computer programming using C++. Topics include: scalar types; aggregate types; pointers and reference types; statements; expressions; functions; libraries; and a brief introduction to classes, objects, and overloading. Emphasis is on: development, compilation, debugging, and execution of complete programs implementing given algorithms for numerical, scientific, and engineering applications.*
 
 </details>
 
@@ -20,7 +22,9 @@ An introductory course in computer programming using C++. Topics include: scalar
 - [The Big Race](cs117/p9)
 - [Entropy Report](cs117/p10)
 
-### [CS121](cs121/README.md) *Computer Science I*
+___
+
+### [CS121](cs121/README.md) - Computer Science I
 
 <details>
 
