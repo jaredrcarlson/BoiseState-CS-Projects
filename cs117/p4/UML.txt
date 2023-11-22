@@ -1,0 +1,44 @@
+Student
+
+- name : string
+- score_total : double
+- num_scores : int
+
++ set_name() : void
++ get_name() : string
++ add_score() : void
++ display_report() : void
+- get_ave_score() : double
+- get_grade() : char
+
+
+
+Quiz
+
+- question_1 : string
+- question_2 : string
+- question_3 : string
+- answer_1 : string
+- answer_2 : string
+- answer_3 : string
+
++ set_question_1() : void
++ set_question_2() : void
++ set_question_3() : void
++ set_answer_1() : void
++ set_answer_2() : void
++ set_answer_3() : void
++ get_question_score_1() : double
++ get_question_score_2() : double
++ get_question_score_3() : double
+- ask_question() : double
+
+
+
+QuizProctor
+
+- quiz_1 : Quiz
+- student_1 : Student
+
+- QuizProctor() : constructor
++ proctor_quiz() : void

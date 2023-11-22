@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/students/jcarlson/cs117/programs/p8/griffin/starter/src/projects/tester/Finch.h
+
+/home/students/jcarlson/cs117/programs/p8/griffin/starter/src/projects/tester/tester.cpp
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+iomanip
+-
+termios.h
+-
+unistd.h
+-
+Finch.h
+/home/students/jcarlson/cs117/programs/p8/griffin/starter/src/projects/tester/Finch.h
+

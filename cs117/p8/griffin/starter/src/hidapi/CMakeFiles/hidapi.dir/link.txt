@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++  -fPIC -std=gnu++0x  -g   -shared -Wl,-soname,libhidapi.so -o libhidapi.so CMakeFiles/hidapi.dir/hid.cpp.o -lboost_system-mt 

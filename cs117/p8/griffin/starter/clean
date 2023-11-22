@@ -1,0 +1,42 @@
+#!/bin/bash
+#Clears out all cmake stuff
+delete_files(){
+    echo "Cleaning dir" `pwd`
+    rm -rf CMakeFiles
+    rm -rf CMakeCache.txt
+    rm -rf cmake_install.cmake
+    rm -f Makefile
+    rm -f *.make
+    rm -f tags
+	rm -f *.vcxproj
+	rm -f *.sln
+	rm -f *.sdf
+	rm -f *.suo
+	rm -rf Debug
+	rm -rf Win32
+	rm -rf *.filters
+	rm -rf *.vcxproj.user
+	rm -rf *.dir
+}
+
+
+clean_dirs(){
+    for d in `ls`
+    do
+        if [ -d $d ]
+        then
+            cd $d
+            delete_files 
+            clean_dirs
+            cd ..
+        fi
+    done
+}
+
+echo "Start"
+make clean
+delete_files
+clean_dirs
+echo "Done"
+
+

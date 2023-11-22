@@ -1,0 +1,14 @@
+Order of commands   Function call                 Return value  
+1                   setMotors(60,-60);            9             
+2                   setMotors(60,-60);            9             
+3                   setMotors(-60,60);            9             
+4                   setMotors(-60,60);            9             
+5                   setMotors(0,0);               9             
+6                   setMotors(60,-60);            9             
+7                   setMotors(60,-60);            9             
+8                   setMotors(-60,60);            9             
+9                   setMotors(-60,60);            9             
+10                  setMotors(60,-60);            9             
+11                  setMotors(0,0);               9             
+12                  setMotors(-60,60);            9             
+13                  setMotors(0,0);               9             

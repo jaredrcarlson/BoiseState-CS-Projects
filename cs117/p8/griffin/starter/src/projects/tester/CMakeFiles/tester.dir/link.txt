@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++   -std=gnu++0x  -g    CMakeFiles/tester.dir/tester.cpp.o CMakeFiles/tester.dir/Finch.cpp.o  -o tester -rdynamic ../../hidapi/libhidapi.so -lboost_thread-mt -lboost_system-mt -Wl,-rpath,/home/students/jcarlson/cs117/programs/p8/griffin/starter/src/hidapi 
