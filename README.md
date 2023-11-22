@@ -2,7 +2,7 @@
 
 ___
 
-### [CS117](cs117/README.md) :diamonds: C++ for Engineers
+### [CS117](cs117/README.md) :large_orange_diamond: C++ for Engineers
 
 <details>
 
@@ -24,7 +24,7 @@ An introductory course in computer programming using C++. Topics include: scalar
 
 ___
 
-### [CS121](cs121/README.md) :large_orange_diamond: Computer Science I
+### [CS121](cs121/README.md) :small_orange_diamond: Computer Science I
 
 <details>
 
