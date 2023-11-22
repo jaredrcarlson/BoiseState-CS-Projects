@@ -1,10 +1,13 @@
 ![Boise State University](bsu_logo.png?raw=true)
 
-## Course Projects
+<details>
 
-### [CS117](cs117/README.md)  *C++ for Engineers*
+<summary>### [CS117](cs117/README.md)  *C++ for Engineers*</summary>
 An introductory course in computer programming using C++. Topics include: scalar types; aggregate types; pointers and reference types; statements; expressions; functions; libraries; and a brief introduction to classes, objects, and overloading. Emphasis is on: development, compilation, debugging, and execution of complete programs implementing given algorithms for numerical, scientific, and engineering applications.
 
+</details>
+
+### Projects
 - [Max Deflection](cs117/p1)  
 - [Barcode Converter](cs117/p3)  
 - [Best Poker Hand](cs117/p2)  
@@ -15,11 +18,17 @@ An introductory course in computer programming using C++. Topics include: scalar
 - [The Big Race](cs117/p9)
 - [Entropy Report](cs117/p10)
 
+
+___
+
 ### [CS121](cs121/README.md)  *Computer Science I*
 Introduction to object-oriented problem solving and programming. Software development process. Data and expression, conditionals and loops, arrays and lists, and classes and interfaces. Introduction to graphical user interfaces (GUIs). Guided, in-class programming activities and targeted projects to teach problem solving and software development skills.
 
+### Projects
 - [Traffic Animation](cs121/p1)
 - [Music Playlist](cs121/p2)
 - [Random Walk](cs121/p3)
 - [Flesch Statistics](cs121/p4)
 - [Mine Walker Game](cs121/p5)
+
+___
