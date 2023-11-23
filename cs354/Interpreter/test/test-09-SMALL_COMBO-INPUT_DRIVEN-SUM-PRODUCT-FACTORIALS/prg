@@ -1,0 +1,39 @@
+^Initialize and Display x and y^
+x = 37; y = 17;
+
+^Read-In value for z^
+rd z;
+
+^Display initial values of x, y, and z^
+wr x; wr y; wr z;
+
+^Store and Display the Sum (s) of x, y, and z^
+s = x + y + z;
+wr s;
+
+^Read-In Multiplier (m)^
+rd m;
+
+^Store the Product (p) of Sum and Multiplier and Display this Product^
+p = s * m;
+wr p;
+
+^Read-In (n) number of values and compute the Factorial (f) for each value before reading-in the next^
+rd n;
+index = 0;
+while index < n do
+	begin
+		rd value;
+		if value == 0 then
+			f = 1
+		else
+			f = value;
+		ValueMinus1 = value - 1;
+		while ValueMinus1 > 1	do
+			begin
+				f = f * ValueMinus1;
+				ValueMinus1 = ValueMinus1 - 1
+			end;
+		wr f;
+		index = index + 1
+	end

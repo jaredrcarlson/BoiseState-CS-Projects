@@ -1,0 +1,7 @@
+x = 0;
+while x <= 10 do
+	begin
+		wr x;
+		x = x + 1
+	end
+	

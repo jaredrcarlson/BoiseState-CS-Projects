@@ -1,0 +1,7 @@
+(a|b)*a
+aaa,yes
+bbb,no
+aba,yes
+bba,yes
+e,no
+a,yes

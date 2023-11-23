@@ -1,0 +1,10 @@
+aaa(a|b)*bbb
+aaaabbb,yes
+aaabbbb,yes
+aaabbb,yes
+aaabbbbb,yes
+aaaabababababababbb,yes
+aaaa,no
+aaabb,no
+bba,no
+e,no

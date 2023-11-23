@@ -1,0 +1,8 @@
+begin
+x = 1;
+y = 2;
+z = 3;
+wr x;
+wr y;
+wr z
+end

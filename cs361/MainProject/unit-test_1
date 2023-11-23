@@ -1,0 +1,11 @@
+a*(b(a|b))
+aba,yes
+aaaaaba,yes
+aaaaaaaaaaaaaaaabb,yes
+aabb,yes
+aaaaaaaaaaaaaaaab,no
+abba,no
+aaaaaaaaaabab,no
+a,no
+b,no
+aaabaa,no

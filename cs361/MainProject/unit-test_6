@@ -1,0 +1,17 @@
+aa*bb*(aa|e)
+e,no
+aa,no
+bb,no
+aabb,yes
+aabbaa,yes
+aaaa,no
+aaaabbaa,yes
+bbbb,no
+bbbbaa,no
+bbaaaa,no
+aaa,no
+bbb,no
+aaabbaa,yes
+aabbbaa,yes
+aaaabbbba,no
+aabbba,no

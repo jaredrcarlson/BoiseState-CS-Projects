@@ -1,0 +1,7 @@
+((a|b)(a|b))*
+abbabb,yes
+e,yes
+aa,yes
+ab,yes
+aaaaa,no
+bba,no

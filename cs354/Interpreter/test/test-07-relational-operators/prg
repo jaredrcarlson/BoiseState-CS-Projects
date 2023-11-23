@@ -1,0 +1,13 @@
+a = 1; b = 2; c = 2; d = 3; e = 3; f = 4; g = 4; 
+if a < b then wr 1 else wr 0;
+if b < a then wr 1 else wr 0;
+if b <= c then wr 1 else wr 0;
+if d <= b then wr 1 else wr 0;
+if d > c then wr 1 else wr 0;
+if c > d then wr 1 else wr 0;
+if e >= d then wr 1 else wr 0;
+if e >= f then wr 1 else wr 0;
+if d <> c then wr 1 else wr 0;
+if d <> e then wr 1 else wr 0;
+if f == g then wr 1 else wr 0;
+if e == g then wr 1 else wr 0

@@ -1,0 +1,108 @@
+^Initialize and Display x, y, and z^
+x = 0; y = 10; z = 20;
+wr x; wr y; wr z;
+
+^Increment x by 1 until x == y - 2^
+while x + 1 < y - 1 do
+	begin
+		x = x + 1;
+		wr x
+	end;
+	
+^Decrement z until z == x - 2^
+while z >= x - 1 do
+	begin
+		z = z - 1;
+		wr z
+	end;
+
+^Display final values of x, y, z^
+wr x; wr y; wr z;
+
+^Sort and Display these values in Ascending Order^
+if y < x then
+	if z < y then
+		begin
+			element1 = z;
+			element2 = y;
+			element3 = x
+		end
+	else
+		if z < x then
+			begin
+				element1 = y;
+				element2 = z;
+				element3 = x
+			end
+		else 
+			begin
+				element1 = y;
+				element2 = x;
+				element3 = z
+			end
+else
+	if y < z then
+		begin
+			element1 = x;
+			element2 = y;
+			element3 = z
+		end
+	else
+		if x < z then 
+			begin
+				element1 = x;
+				element2 = z;
+				element3 = y
+			end
+		else
+			begin
+				element1 = z;
+				element2 = x;
+				element3 = y
+			end;
+	
+wr element1;
+wr element2;
+wr element3;
+
+^RaceCar Simulation^
+RedCar = 0; BlueCar = 0; GreenCar = 0; FinishLine = 100;
+wr RedCar; wr BlueCar; wr GreenCar;
+
+CheckeredFlag = 0;
+while CheckeredFlag <> 1 do
+	begin
+		RedCar = RedCar + 5;
+		BlueCar = BlueCar + 3;
+		GreenCar = GreenCar + 4;
+		wr RedCar; wr BlueCar; wr GreenCar;
+		
+		if RedCar >= FinishLine then
+			begin
+				CheckeredFlag = 1;
+				Winner = RedCar
+			end
+		else if BlueCar >= FinishLine then
+			begin
+				CheckeredFlag = 1;
+				Winner = BlueCar
+			end
+		else if GreenCar >= FinishLine then
+			begin
+				CheckeredFlag = 1;
+				Winner = GreenCar
+			end
+	end;
+VictoryLaps = 3;
+Lap = 0;
+while Lap < VictoryLaps do
+	begin
+		wr Winner;
+		Lap = Lap + 1
+	end
+
+
+
+	
+	
+

@@ -1,0 +1,33 @@
+#!/bin/gawk -f
+
+# Required Fields 
+# Col 1 -> IssueDate
+# Col 3 -> Description == "Single Family Dwelling"
+# Col 5 -> SubNameOrTwnRngSec
+# Col 6 -> LOT
+# Col 7 -> BLOCK
+# Col 8 -> Value
+
+BEGIN {
+    FPAT = "([^,]*)|(\"[^\"]+\")"
+	print "<html>\n\n<head>\n<title>Ada County Building-Permit Information</title>\n</head>\n"
+	print "<body bgcolor=\"#007fff\">\n<h1>Single Family Dwellings</h1>\n"
+	print "<table border=\"1\" style=\"width:80%\" bgcolor=\"#ffffcc\">\n<tr align=\"left\">\n<th>Name</th> <th>Issue Date</th> <th>Lot</th> <th>Block</th> <th>Value</th>\n</tr>"
+}
+
+# Print rows with match pattern for Single Dwelling Family
+tolower($3) ~ /ingl/ && /ami/ && /wel/ {
+	print "<tr>\n<td>" stripQuotes($5) "</td> <td>" stripQuotes($1) "</td> <td>" stripQuotes($6) "</td> <td>" stripQuotes($7) "</td> <td>" stripQuotes($8) "</td>\n</tr>"
+}
+
+END {
+	print "\n</table>\n</body>\n</html>"
+}
+
+function stripQuotes(fld) {
+	if (substr(fld, 1, 1) == "\"") {
+		len = length(fld)
+		fld = substr(fld, 2, len - 2)
+	}
+	return fld
+}
