@@ -76,3 +76,54 @@ Structure of C programs, functions, scope, arrays, structures, pointers, and run
 - [Bash - Testing C Program](cs253/p5)
 - [Checkpointing](cs253/p6)
 - [Checkpointing - Multi-Threaded](cs253/p7)
+
+___
+
+### [CS321](cs321/README.md) :small_orange_diamond: Data Structures
+
+<details>
+
+<summary>Course Description</summary>
+Asymptotic analysis of data structures and algorithms. Efficient algorithms for searching and sorting. Abstract data types including priority queues, maps, search trees, and graphs. Implementation of abstract data types using data structures such as heaps, hash tables, trees, binary search trees, balanced search trees, B-Trees, and representation of graphs. Intro to graph algorithms such as bread-first search, and depth-first search. Continued use of good software engineering practices such as unit testing, automated testing, agile development, version control, and data persistence.
+
+</details>
+
+**Course Projects**
+- [Cache (Linked List)](cs321/p1)
+- [CPU Scheduling (Priority Queue using Max-Heap)](cs321/p2)
+- [Hash Table](cs321/p3)
+- [Huffman Tree (Min-Heap)](cs321/p4)
+- [Bioinformatics (Binary Tree)](cs321/p5)
+
+___
+
+### [CS354](cs354/README.md) :small_orange_diamond: Programming Languages
+
+<details>
+
+<summary>Course Description</summary>
+Principles of programming languages: design, syntax, semantics, information binding, strings, arithmetic, input/output, recursion and extensibility.
+
+</details>
+
+**Course Projects**
+- [Scheme](cs354/Scheme)
+- [Prolog](cs354/Prolog)
+- [Awk](cs354/Awk)
+- [Smalltalk](cs354/Smalltalk)
+- [CSharp](cs354/CSharp)
+- [Interpreter (Java)](cs354/Interpreter)
+
+___
+
+### [CS361](cs361/README.md) :small_orange_diamond: Introduction to the Theory of Computation
+
+<details>
+
+<summary>Course Description</summary>
+Regular languages, finite automata, context-free languages, pushdown automata, Turing machines, decidability, introduction to reducibility and computational complexity.
+
+</details>
+
+**Course Projects**
+- [RegEx to DFA with Input String Validation](cs361/MainProject)
