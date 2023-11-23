@@ -1,5 +1,5 @@
 ## CS 354 Programming Languages
 
-### Language: Awk
+### Language: Prolog
 
 [**Assignment Overview (PDF)**](Assignment_Overview.pdf)

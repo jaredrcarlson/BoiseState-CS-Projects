@@ -1,5 +1,5 @@
 ## CS 354 Programming Languages
 
-### Language: Awk
+### Language: Smalltalk
 
 [**Assignment Overview (PDF)**](Assignment_Overview.pdf)

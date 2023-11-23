@@ -1,5 +1,5 @@
 ## CS 354 Programming Languages
 
-### Language: Awk
+### Language: Scheme
 
 [**Assignment Overview (PDF)**](Assignment_Overview.pdf)
