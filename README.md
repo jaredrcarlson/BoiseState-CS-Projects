@@ -1,4 +1,4 @@
-![Boise State University](bsu_logo.png?raw=true)
+![Boise State University](bsu_logo.png?h=70%)
 
 ___
 
