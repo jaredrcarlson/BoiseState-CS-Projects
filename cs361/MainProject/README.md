@@ -43,25 +43,25 @@ is passed as a parameter to the constructor upon instantiation.
 ## Context-Free Grammar Definition
 The Context-Free Grammar used is as follows:
 ```html
-	EXPR_SINGLE:			<REExpr> : <RETerm>
- 	EXPR_COMPOUND:			<REExpr> | <RETerm> '|' <REExpr>
- 	
- 	TERM_SYMBOL:			<RETerm> : <RESymb>
- 	TERM_GROUP:				<ReTerm> | <REGroup>
-  	
-  	SYMB_A:					<RESymb> : 'a'
-	SYMB_B:					<RESymb> : 'b'
-    SYMB_E:					<RESymb> : 'e'
-     
-   	GROUP_SINGLE_EXPR:		<REGroup> : '(' <REExpr> ')'
-    GROUP_MULT_EXPR:		<REGroup> | '(' <REExprMult> ')'
-    GROUP_MULT_SYMBOL:		<REGroup> | <RESymbMult>
-     
-   	EXPR_MULT:				<REExprMult> : <REExpr> { <REExpr> }
-    SYMB_MULT:				<RESymbMult> : <RESymb> { <RESymb> }
-   	
-    
-    *Note: { <RE-Type> } --> denotes that "One or More" <RE-Type> items are present   
+EXPR_SINGLE:			    <REExpr> : <RETerm>
+EXPR_COMPOUND:		    <REExpr> | <RETerm> '|' <REExpr>
+
+TERM_SYMBOL:			    <RETerm> : <RESymb>
+TERM_GROUP:				    <ReTerm> | <REGroup>
+
+SYMB_A:				        <RESymb> : 'a'
+SYMB_B:					      <RESymb> : 'b'
+SYMB_E:					      <RESymb> : 'e'
+
+GROUP_SINGLE_EXPR:		<REGroup> : '(' <REExpr> ')'
+GROUP_MULT_EXPR:		  <REGroup> | '(' <REExprMult> ')'
+GROUP_MULT_SYMBOL:		<REGroup> | <RESymbMult>
+
+EXPR_MULT:				    <REExprMult> : <REExpr> { <REExpr> }
+SYMB_MULT:				    <RESymbMult> : <RESymb> { <RESymb> }
+
+
+  *Note: { <RExxxx> } --> denotes that "One or More" <RExxxx> items are present   
 ``` 
 
 
