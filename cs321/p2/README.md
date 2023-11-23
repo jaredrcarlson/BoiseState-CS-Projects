@@ -57,5 +57,6 @@ crementPriority time units, the process’s priority will be increased by one.
 - processArrivalRate: using this rate to decide whether to generate a new process in
 each time unit.
 
-**Simulation Flow Chart:**
+**Simulation Flow Chart:**  
+
 ![Simulation Flow Chart](simulation_flow_chart.png?raw=true)
