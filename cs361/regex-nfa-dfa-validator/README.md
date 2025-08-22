@@ -2,133 +2,161 @@
 
 A Java implementation of automata construction and validation from regular expressions.  
 
-## Implementation Overview
+## Summary
 
-This program executes the following major procedures:
+This program converts regular expressions into nondeterministic finite automata (NFA), then into deterministic finite automata (DFA), and validates input strings against the resulting automata. It includes end-to-end parsing, automaton construction, minimization, and a command-line interface for testing. Comprehensive unit tests demonstrate correctness and maintainability.
 
-* Parses a Regular Expression into Context-Free Grammar objects
-* Constructs an NFA from the resulting CFG objects
-* Converts the NFA to a DFA that accepts the same set of strings
-* Validates input strings using the DFA printing Yes (Accepted) or No (Rejected) for each
+## Implementation
 
-## Major Procedure Source Code Descriptions
+```csharp
+Regex (string)
+      │
+      ▼
+[REScanner] ──► [REParser]
+      │              │
+      │              ▼
+      │        RE* grammar objects
+      │              │
+      ▼              ▼
+         [NFABuilder] ──► NFAStateMachine
+                               │
+                               ▼
+                    [NFAtoDFAConverter] ──► DFAStateMachine
+                                               │
+                                               ▼
+                                        [DFAStringChecker]
+                                               │
+                                               ▼
+                               "Yes (Accepted)" / "No (Rejected)"
+```
 
-**Main**  
-MainProject1.java contains the "main" method and makes use of the other major procedure classes to build the DFA from the original regular expression. All command line arguments as well as input/output filenames are validated and then other major procedure classes are used to produce output. A detailed usage message is displayed if any errors are detected while processing command-line arguments.
+### Program execution flows through four major steps  
 
-**REParser / REScanner**  
-REParser.java makes use of REScanner.java and uses a Context-Free Grammar to recursively parse the regular expression into RE[Grammar-Type] class objects. See Context-Free Grammar section for the grammar definition.
+1. **Parse** a regular expression into grammar objects  
+2. **Build** an NFA from the parsed grammar  
+3. **Convert** the NFA into an equivalent DFA  
+4. **Validate** input strings against the DFA, printing `Yes (Accepted)` or `No (Rejected)`  
 
-**NFABuilder**  
-NFABuilder.java uses the RE[Grammar-Type] objects to construct an NFAStateMachine object.
+### Major Components  
 
-**NFAtoDFAConverter**  
-NFAtoDFAConverter.java contains a static method which takes an NFAStateMachine object as a parameter
-and returns an equivalent DFAStateMachine object. (Accepts the same language)
+- **`RegexValidator.java` (Main)**  
+  Entry point. Handles command-line arguments, validates input/output filenames, and coordinates all major procedures. Displays detailed usage instructions if errors are detected.  
 
-**DFAStringChecker**  
-DFAStringChecker.java checks if an input string is Accepted or Rejected by the DFAStateMachine that
-is passed as a parameter to the constructor upon instantiation.
+- **`REParser.java` / `REScanner.java`**  
+  Use a recursive-descent approach with a context-free grammar to parse regular expressions into typed objects (`RE*` classes).  
 
-## Additional Source Code Descriptions
+- **`NFABuilder.java`**  
+  Consumes parsed regex objects to build an `NFAStateMachine`.  
 
-* NFAStateMachine.java/DFAStateMachine.java represent NFA/DFA State Machines.
-* FAState.java represents a Finite Automata State for either an NFA or DFA State Machine.
-* RE.java represents a Regular Expression.
-* REPathComponent.java represents one portion of a Regular Expression which corresponds to a set
-   of NFA/DFA states that will exist after building the state machine. Think of a single path component
-   as one major "step" from the start state on the way to the final state. The regular expression: ab
-   has two path components since an input string MUST have an 'a' and then MUST have a 'b' to be valid.
-* RE[Grammar-Type].java classes represent each valid Grammar-Type for a Regular Expression.
+- **`NFAtoDFAConverter.java`**  
+  Converts an `NFAStateMachine` into an equivalent `DFAStateMachine` (accepts the same language).  
+
+- **`DFAStringChecker.java`**  
+  Validates input strings against the DFA and outputs Accepted/Rejected results.  
+
+### Supporting Classes  
+
+- **`NFAStateMachine.java` / `DFAStateMachine.java`** – Represent automata state machines  
+- **`FAState.java`** – Represents an individual automaton state (used by NFA and DFA)  
+- **`RE.java`** – Represents a regular expression object  
+- **`REPathComponent.java`** – Represents a single path component in a regex (e.g., `"ab"` → path components `"a"` then `"b"`)  
+- **`RE[GrammarType].java` classes** – Represent specific grammar types in the regex definition  
+
+### Why Design Decisions Matter
+
+This organization mirrors the **theoretical pipeline** (Regex → NFA → DFA → Validation), making it easy to trace each step from parsing through execution. It also demonstrates structured software design: **single-responsibility classes, separation of concerns, and clear interfaces**.  
 
 ## Context-Free Grammar Definition
 
-The Context-Free Grammar used is as follows:
+The following CFG defines the subset of regular expressions supported by this project:
 
-```html
-EXPR_SINGLE:          <REExpr> : <RETerm>
-EXPR_COMPOUND:        <REExpr> | <RETerm> '|' <REExpr>
+```csharp
+EXPR_SINGLE      → RETerm
+EXPR_COMPOUND    → REExpr '|' REExpr
 
-TERM_SYMBOL:          <RETerm> : <RESymb>
-TERM_GROUP:           <ReTerm> | <REGroup>
+TERM_SYMBOL      → RESymb
+TERM_GROUP       → REGroup
 
-SYMB_A:               <RESymb> : 'a'
-SYMB_B:               <RESymb> : 'b'
-SYMB_E:               <RESymb> : 'e'
+RESymb           → 'a' | 'b' | 'e'
 
-GROUP_SINGLE_EXPR:    <REGroup> : '(' <REExpr> ')'
-GROUP_MULT_EXPR:      <REGroup> | '(' <REExprMult> ')'
-GROUP_MULT_SYMBOL:    <REGroup> | <RESymbMult>
+REGroup          → '(' REExpr ')'
+                 | '(' REExprMult ')'
+                 | RESymbMult
 
-EXPR_MULT:            <REExprMult> : <REExpr> { <REExpr> }
-SYMB_MULT:            <RESymbMult> : <RESymb> { <RESymb> }
-
-
-  *Note: { <RExxxx> } --> denotes that "One or More" <RExxxx> items are present   
+REExprMult       → REExpr { REExpr }   // one or more
+RESymbMult       → RESymb { RESymb }   // one or more
 ```
+
+**Notes**  
+
+- `{ X }` denotes *one or more* repetitions of X.  
+- Grammar objects are implemented as `RE[GrammarType].java` classes and used to build NFAs.
 
 ## Debugging Options
 
-Debugable.java is used to make debug integration more fluid and helps to produce code that is easier to read and maintain.
+`Debugable.java` centralizes debugging configuration to make the codebase easier to read and maintain.
 
-Available Debugging options are as follows:
+| Level | Description |
+|-------|-------------|
+| 0     | Disabled (default) – only final Yes/No results for string checks |
+| 1     | Final statistics (PASS/FAIL) per input string |
+| 2     | Level 1 + major procedure start and final results |
+| 3     | Level 2 + detailed step-by-step activity |
+| 4     | Level 2 + delay between procedures |
+| 5     | Level 3 + delay between procedures |
+| 6     | Level 3 + redirect output to `debug.stdout.log` / `debug.stderr.log` |
 
-| Option | Description |
-| :--- | :--- |
-| LEVEL_0 | Disabled (Default) - Only shows Required Output for input string checks (yes/no) |
-| LEVEL_1 | Show Only Final Statistics - Input String (PASS/FAIL) |
-| LEVEL_2 | LEVEL_1 + Major Procedure Start and Final Results |
-| LEVEL_3 | LEVEL_2 + Minor Procedure Activity |
-| LEVEL_4 | LEVEL_2 with a Delay between Procedures |
-| LEVEL_5 | LEVEL_3 with a Delay between Procedures |
-| LEVEL_6 | LEVEL_3 with output redirection --> ("debug.stdout.log", "debug.stderr.log") |
-
-**Debug Usage**  
-To run the program with debugging, simply include the desire debug level as the second command line argument.
-
-Example 1: Display only Major Process Results
+**Usage**  
+Specify the debug level as the second command-line argument.  
 
 ```bash
-java MainProject1 inputFile.txt 1
+# Example 1: Show only major process results
+java RegexValidator inputFile.txt 1
+
+# Example 2: Redirect full debug output to log files
+java RegexValidator inputFile.txt 6
 ```
 
-Example 2: Redirect Full Debug Report to (STDOUT/STDERR) log files
+## Compiling and Running
+
+From the `regex-nfa-dfa-validator` source directory:
 
 ```bash
-java MainProject1 inputFile.txt 6
+# Compile
+javac RegexValidator.java
+
+# Run (default, no debug)
+java RegexValidator input.txt
 ```
 
-## Compiling and Using (Default - No Debug)
+Where `input.txt` contains:  
 
-Compile with the following command from within the MainProject1 source directory:
-
-```bash
-javac MainProject1.java
-```
-
-To run the program, simply use:
-
-```bash
-java MainProject1.java input.txt
-```
-
-where "input.txt" is the input filename containing the regular expression on line 1 followed by
-any number of input strings to check on subsequent lines
+- Line 1: the regular expression  
+- Line 2+: input strings to validate against the regex
 
 ## Unit Testing
 
-### Overview
+Unit tests are run using a Bash script that compiles the program, executes each test file, and compares actual results against expectations. Each test has two parts:
 
-Unit testing is performed through the use of Linux bash scripts that build and run a user-defined set of tests. Each test is performed and a "PASSED" or "FAILED" message is displayed for each test. If a test happens to FAIL, the results for that test are displayed showing which strings were ACCEPTED and which strings were REJECTED. All of the files used for each test are saved to a "time-stamped" unit-tests directory, including a REPORT.txt file that shows the language definition and exactly which strings were ACCEPTED/REJECTED during the test run.
+1. **Line 1:** A regular expression to validate  
+2. **Subsequent lines:** Input strings, each annotated with the expected result (`yes` or `no`)  
 
-**Usage Instructions**  
-In order to perform unit tests, you must first create individual unit test files for each test you would like to run. This is very simple and there are already some example unit test files in the main project directory. Each unit test filename MUST begin with "unit-test_" in order for it to be included in test runs. Examples are: unit-test_1, unit-test_2, unit-test_MyTest. Each unit test file has the same basic format as the input file used for MainProject1, except that each input string must end with either ",yes" or ",no" depending on whether or not the string should be Accepted or Rejected respectively.
+When run, the script automatically creates a timestamped results directory containing:  
 
-The following is an example of a simple unit test file:  
+- The generated input file  
+- An expected output file  
+- The program’s actual output  
+- A `REPORT.txt` summarizing accepted/rejected strings  
 
-### unit-test_a_or_b
+### Test File Naming
 
-```bash
+- All unit test files must start with `unit-test_`  
+- Examples: `unit-test_1`, `unit-test_email`, `unit-test_a_or_b`  
+- Unit test files extend the normal input format by appending `,yes` or `,no` to each string to indicate the expected outcome  
+
+### Example Test File: `unit-test_a_or_b`
+
+```text
 (a|b)
 a,yes
 b,yes
@@ -137,117 +165,106 @@ ba,no
 e,no
 ```
 
-Once you have created your unit test files, simply execute the following command:
+### Running the Tests
+
+From the project root:
 
 ```bash
-./runUnitTests.sh
+./runUnitTests.sh [DEBUG_LEVEL]
 ```
 
-If needed, give the runUnitTests.sh script executable permissions:
+- `DEBUG_LEVEL` is optional (0–6). If omitted, it defaults to `0`.  
+- Results are stored in a new directory named `unit-tests_YYYY-MM-DD_HH-MM-SS/`  
+
+If needed, give the script execute permission:
 
 ```bash
 chmod +x runUnitTests.sh
 ```
 
-## Sample Testing Results (Using Debug Level 1)
+## Examples of test results (Debug Level 1) ##
 
-The following several sample tests were produced using Debug Level 1 to make it easier to quickly
-see the RegEx and how all input test strings were handled:
+Each regex is explained in plain English, followed by tables of accepted and rejected strings.
 
-```bash
-Language Definition: a*(b(a|b))
+---
 
-  -----<| Accepted |>-----
-  aba
-  aaaaaba
-  aaaaaaaaaaaaaabb
+**Regular Expression:** `a*(b(a|b))`  
+*Matches zero or more `a`s, followed by `b`, then either `a` or `b`.*  
 
-  -----<| Rejected |>-----
-  aaaaaaaaaaaaaab
-  abba
-  aaaaaaaaaabab
-  a
-  b
-  aabbb
-  aaabaa
+| Accepted            | Rejected           |
+|---------------------|--------------------|
+| aba                 | aaaaaaaaaaaaaab    |
+| aaaaaba             | abba               |
+| aaaaaaaaaaaaaabb    | aaaaaaaaaabab      |
+|                     | a                  |
+|                     | b                  |
+|                     | aabbb              |
+|                     | aaabaa             |
 
+---
 
-Language Definition: a(a|b|e)a
+**Regular Expression:** `a(a|b|e)a`  
+*Matches strings that begin and end with `a`, with an optional middle of `a`, `b`, or empty.*  
 
-  -----<| Accepted |>-----
-  aa
-  aaa
-  aba
+| Accepted            | Rejected           |
+|---------------------|--------------------|
+| aa                  | aab                |
+| aaa                 | aaaa               |
+| aba                 | ab                 |
 
-  -----<| Rejected |>-----
-  aab
-  aaaa
-  ab
-  
-  
-Language Definition: aa(a|b|e)
+---
 
-  -----<| Accepted |>-----
-  aa
-  aaa
-  aab
+**Regular Expression:** `aa(a|b|e)`  
+*Matches `aa` followed by an optional `a`, `b`, or empty.*  
 
-  -----<| Rejected |>-----
-  aaaa
-  aaba
-  baaa
-  
-  
-Language Definition: b(a*|b)a
+| Accepted            | Rejected           |
+|---------------------|--------------------|
+| aa                  | aaaa               |
+| aaa                 | aaba               |
+| aab                 | baaa               |
 
-  -----<| Accepted |>-----
-  baa
-  bba
-  baaaaaaaaaaaa
-  ba
+---
 
-  -----<| Rejected |>-----
-  baaaab
-  bb
-  aaaaaa
-  e
-  
-  
-Language Definition: aaa(a|b)*bbb
+**Regular Expression:** `b(a*|b)a`  
+*Matches strings starting with `b`, followed by either a run of `a`s or a single `b`, and ending with `a`.*  
 
-  -----<| Accepted |>-----
-  aaaabbb
-  aaabbbb
-  aaabbb
-  aaabbbbb
-  aaaaabbb
+| Accepted            | Rejected           |
+|---------------------|--------------------|
+| baa                 | baaaab             |
+| bba                 | bb                 |
+| baaaaaaaaaaaa       | aaaaaa             |
+| ba                  | e                  |
 
-  -----<| Rejected |>-----
-  aaaa
-  aaabb
-  bba
-  aaabb
-  e
-  
-  
-Language Definition: aa*bb*(aa|e)
+---
 
-  -----<| Accepted |>-----
-  aabb
-  aaabbb
-  ab
-  abaa
-  aaabbbbb
-  aaabbbbbaa
+**Regular Expression:** `aaa(a|b)*bbb`  
+*Matches strings beginning with `aaa`, followed by zero or more `a`s or `b`s, and ending with `bbb`.*  
 
-  -----<| Rejected |>-----
-  aba
-  baa
-  e
-  aaaabbbbbba
-  aabbaaa
-```
+| Accepted            | Rejected           |
+|---------------------|--------------------|
+| aaaabbb             | aaaa               |
+| aaabbbb             | aaabb              |
+| aaabbb              | bba                |
+| aaabbbbb            | aaabb              |
+| aaaaabbb            | e                  |
 
-## Final Thoughts
+---
 
-This was a very challenging project and required more time to complete than I had originally anticipated. Working through this project forced me to think differently while programming and helped me to find new ways to approach problems. By writing every line of every source file, instead of copying/pasting some of the Java recursive decent code found in the project resource, I gained a much deeper understanding of recursive decent parsing. However, this decision increased my development time which is certainly something I will consider in the future. My goal for this course has been to learn as much as I can which, at times, has required more time and effort than it would take to simply earn a passing grade. Completing this project was very rewarding.
+**Regular Expression:** `aa*bb*(aa|e)`  
+*Matches one or more `a`s, followed by one or more `b`s, and optionally ending with `aa`.*  
+
+| Accepted            | Rejected           |
+|---------------------|--------------------|
+| aabb                | aba                |
+| aaabbb              | baa                |
+| ab                  | e                  |
+| abaa                | aaaabbbbbba        |
+| aaabbbbb            | aabbaaa            |
+| aaabbbbbaa          |                    |
+
+## Growth Indicators
+
+- Strengthened ability to **translate formal specifications** (regular expression grammar) into a working, maintainable software system  
+- Reinforced the importance of **unit testing** to validate correctness and provide confidence during changes  
+- Gained experience in **structuring code with single-responsibility classes**, making the system easier to read, debug, and extend  
+- Practiced building with an **iterative, step-by-step approach** (Regex → NFA → DFA → Validation) that mirrors Agile development workflows  

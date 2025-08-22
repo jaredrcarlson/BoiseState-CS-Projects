@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *   @author jcarlson <jaredcarlson@u.boisestate.edu>
  *
  */
-public class MainProject1 extends Debugable {
+public class RegexValidator extends Debugable {
 	private static File inputFile;
 	private static FileReader fileReader;
 	private static BufferedReader bufferedReader;
@@ -203,7 +203,7 @@ public class MainProject1 extends Debugable {
 	 */
 	private static void printUsage() {
 		newSB("\n-------------------------------<| Program Usage |>-------------------------------\n");
-		appSB("\njava MainProject1 <input filename> [debug level]\n");
+		appSB("\njava RegexValidator <input filename> [debug level]\n");
 		appSB("\n  <input filename>\n");
 		appSB("  - contains a Regular Expresion on Line 1 with a series of \"Test Strings\" on subsequent lines\n\n");
 		appSB("  [debug level] is one of the following:\n");
@@ -215,9 +215,9 @@ public class MainProject1 extends Debugable {
 		appSB("  [5] --> [3] with a Delay between Procedures\n");
 		appSB("  [6] --> [3] with output redirection --> (\"debug.stdout.log\" | \"debug.stderr.log\")\n");
 		appSB("\nExample: Display only Major Process Results\n");
-		appSB("java MainProject1 inputFile.txt 1\n");
+		appSB("java RegexValidator inputFile.txt 1\n");
 		appSB("\nExample: Redirect Full Debug Report to (stdout/stderr) log files\n");
-		appSB("java MainProject1 inputFile.txt 6\n");
+		appSB("java RegexValidator inputFile.txt 6\n");
 		System.out.println(getSB());
 	}
 	
