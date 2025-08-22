@@ -88,13 +88,13 @@ To run the program with debugging, simply include the desire debug level as the 
 
 Example 1: Display only Major Process Results
 
-```
+```bash
 java MainProject1 inputFile.txt 1
 ```
 
 Example 2: Redirect Full Debug Report to (STDOUT/STDERR) log files
 
-```
+```bash
 java MainProject1 inputFile.txt 6
 ```
 
@@ -102,13 +102,13 @@ java MainProject1 inputFile.txt 6
 
 Compile with the following command from within the MainProject1 source directory:
 
-```
+```bash
 javac MainProject1.java
 ```
 
 To run the program, simply use:
 
-```
+```bash
 java MainProject1.java input.txt
 ```
 
@@ -126,9 +126,9 @@ In order to perform unit tests, you must first create individual unit test files
 
 The following is an example of a simple unit test file:  
 
-*unit-test_a_or_b*
+### unit-test_a_or_b
 
-```
+```bash
 (a|b)
 a,yes
 b,yes
@@ -139,13 +139,13 @@ e,no
 
 Once you have created your unit test files, simply execute the following command:
 
-```
+```bash
 ./runUnitTests.sh
 ```
 
 If needed, give the runUnitTests.sh script executable permissions:
 
-```
+```bash
 chmod +x runUnitTests.sh
 ```
 
@@ -154,7 +154,7 @@ chmod +x runUnitTests.sh
 The following several sample tests were produced using Debug Level 1 to make it easier to quickly
 see the RegEx and how all input test strings were handled:
 
-```
+```bash
 Language Definition: a*(b(a|b))
 
   -----<| Accepted |>-----
